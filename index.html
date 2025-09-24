@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff2a8f">
+<title>Datos de pago — Roos Alta Peluquería y Spa</title>
+<meta name="description" content="Datos bancarios para transferencia. Usa los botones Copiar para evitar errores.">
+<style>
+  :root { --accent: #ff2a8f; --bg:#fff5fa; --ink:#111827; --muted:#6b7280; }
+  html,body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 40px; }
+  .card { background:#fff; border:1px solid #e6e8ee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 18px; }
+  .brand { display:flex; align-items:center; gap:12px; margin: 4px 0 8px; }
+  .brand img { height: 52px; width:auto; }
+  h1 { font-size: clamp(1.2rem, 2.8vw, 1.6rem); margin: 0; line-height:1.2; }
+  .badge { display:inline-block; background: rgba(255,42,143,.12); color: var(--accent); padding:2px 8px; border-radius:999px; font-size:.8rem; margin-left:6px; }
+  .muted { color:var(--muted); font-size: .95rem; margin: 6px 0 14px; }
+  .grid { display:grid; grid-template-columns: 1fr; gap:12px; }
+  @media (min-width:640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .field { display:flex; flex-direction:column; gap:6px; }
+  .label { font-weight:700; color:#374151; }
+  .value { display:flex; align-items:center; justify-content:space-between; gap:10px; background:#f9fbff; border:1px solid #e5e7eb; border-radius:12px; padding: 12px; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing:.3px; }
+  .tip { min-height:1.25em; font-size:.95rem; color:#059669; margin-top: 10px; }
+  .footer { margin-top: 16px; font-size:.86rem; color: var(--muted); }
+  button.copy { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; width: 120px; }
+  button.copy:active { transform: translateY(1px); }
+  a.btn { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; width:100%; max-width:320px; margin:0 auto; }
+  a.btn:active { transform: translateY(1px); }
+  .actions { display:flex; justify-content:center; margin-top: 10px; }
+  .all { border:1px dashed #e5e7eb; background:#fff; padding:14px; border-radius:12px; margin-top:14px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brand">
+        <img src="logo.png" alt="Roos Alta Peluquería y Spa">
+        <h1>Datos de pago <span class="badge">Transferencia</span></h1>
+      </div>
+      <p class="muted">Toca <strong>Copiar</strong> y pega en tu app bancaria. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
+
+      <div class="grid">
+        <div class="field">
+          <div class="label">Beneficiario</div>
+          <div class="value">
+            <span id="nombre">Rosalba Leyva de la Cruz</span>
+            <button class="copy" onclick="copyText('nombre')">Copiar</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">Banco</div>
+          <div class="value">
+            <span id="banco">Banamex</span>
+            <button class="copy" onclick="copyText('banco')">Copiar</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">CLABE (18 dígitos)</div>
+          <div class="value">
+            <span id="clabe" class="mono" data-raw="002320701120719601">002 320 701 120 719 601</span>
+            <button class="copy" onclick="copyRaw('clabe')">Copiar</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">Tarjeta de débito</div>
+          <div class="value">
+            <span id="tarjeta" class="mono" data-raw="5204165123060497">5204 1651 2306 0497</span>
+            <button class="copy" onclick="copyRaw('tarjeta')">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="https://wa.me/523311845963" target="_blank" rel="noopener">WhatsApp 3311845963</a>
+      </div>
+
+      <div class="all">
+        <div class="label" style="margin-bottom:6px">Concepto sugerido</div>
+        <div class="value">
+          <span id="concepto">ROOS</span>
+          <button class="copy" onclick="copyText('concepto')">Copiar</button>
+        </div>
+      </div>
+
+      <div class="tip" id="msg"></div>
+      <div class="footer">Última actualización: 24 Sep 2025</div>
+    </div>
+  </div>
+
+<script>
+function el(id) { return document.getElementById(id); }
+function notify(t) { const m = el('msg'); m.textContent = t; setTimeout(()=> m.textContent='', 1800); }
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => notify('Copiado ✓')).catch(() => fallback(text));
+  } else { fallback(text); }
+}
+function fallback(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+  ta.remove(); notify('Copiado ✓');
+}
+function copyText(id) { copyToClipboard(el(id).textContent.trim()); }
+function copyRaw(id) {
+  const raw = el(id).dataset.raw || el(id).textContent;
+  copyToClipboard(raw.replace(/\s+/g,''));
+}
+</script>
+</body>
+</html>
