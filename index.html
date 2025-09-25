@@ -6,14 +6,11 @@
 <meta name="theme-color" content="#ff2a8f">
 <title>Datos de pago — ROOS Alta Peluquería</title>
 <link rel="icon" href="logo.png" type="image/png">
+
+<!-- Social -->
 <meta property="og:title" content="Datos de pago — ROOS Alta Peluquería">
-<meta property="og:description" content="Transfiere con confianza. Beneficiario: Rosalba Leyva de la Cruz. Banco: Banamex. CLABE y tarjeta con botones para copiar.">
+<meta property="og:description" content="Transfiere con confianza. CLABE y tarjeta con botones para copiar.">
 <meta property="og:image" content="logo.png">
-<meta property="og:url" content="https://wardobb.github.io/ROOS_PAGOS/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Datos de pago — ROOS Alta Peluquería">
-<meta name="twitter:description" content="Transfiere con confianza. CLABE y tarjeta con botones para copiar.">
-<meta name="twitter:image" content="logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,19 +25,19 @@
   .card { background:var(--card); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 18px; }
 
   /* HERO */
-  .hero { display:flex; flex-direction:column; align-items:center; gap:14px; margin: 6px 0 10px; text-align:center; }
-  .hero img { height: 105px; width:auto; }
+  .hero { display:flex; flex-direction:column; align-items:center; gap:10px; margin: 2px 0 4px; text-align:center; }
+  .hero img { height: 90px; width:auto; }
   @media (min-width:600px) {
-    .hero { flex-direction:row; text-align:left; justify-content:flex-start; }
+    .hero { flex-direction:row; text-align:left; justify-content:flex-start; gap:16px; margin: 6px 0 6px; }
     .hero img { height:130px; }
     .hero .info { flex:1; }
   }
   h1 { font-family:'Playfair Display', serif; font-size:clamp(1.5rem, 4vw, 2.2rem); margin:0; }
   .badge { background:rgba(255,42,143,.12); color:var(--accent); padding:4px 10px; border-radius:999px; font-size:.85rem; margin-left:8px; }
-  .subtitle { font-size:.98rem; color:var(--muted); margin-top:6px; }
+  .subtitle { font-size:.98rem; color:var(--muted); margin-top:4px; }
 
-  .muted { color:var(--muted); font-size:.95rem; margin:8px 0 14px; text-align:center; }
-  @media(min-width:600px){.muted{text-align:left;}}
+  .muted { color:var(--muted); font-size:.95rem; margin:8px 0 12px; text-align:center; }
+  @media(min-width:600px){.muted{text-align:left;margin:8px 0 14px;}}
 
   /* GRID */
   .grid{display:grid;grid-template-columns:1fr;gap:0;}
@@ -55,12 +52,12 @@
   .value{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f9fbff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;}
   .mono{font-family:'Poppins',monospace;letter-spacing:.3px;}
 
-  button.copy,.btn{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+  button.copy,.btn{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center;}
   button.copy{width:128px;transition:opacity .15s ease;}
 
   /* Buttons container */
   .actions{display:flex;flex-direction:column;gap:12px;margin-top:16px;padding:0 4px;}
-  .btn-block{display:block;width:100%;max-width:100%;margin:0 auto;}
+  .btn-block{display:block;width:100%;max-width:100%;margin:0 auto;text-align:center;}
   @media(min-width:600px){ .btn-block{max-width:420px;} }
 
   .footer{margin-top:16px;font-size:.86rem;color:var(--muted);text-align:center;}
@@ -102,10 +99,26 @@
 
 <script>
 function el(id){return document.getElementById(id);}
-function copyToClipboard(text,btn){(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(()=>{btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);}).catch(()=>{var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);});}
+function copyToClipboard(text,btn){
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject())
+    .then(()=>{btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);})
+    .catch(()=>{var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);});
+}
 function copyText(id,btn){copyToClipboard(el(id).textContent.trim(),btn);}
 function copyRaw(id,btn){var raw=el(id).dataset.raw||el(id).textContent;copyToClipboard(raw.replace(/\s+/g,''),btn);}
-function shareAll(){var nombre=el('nombre').textContent.trim();var banco=el('banco').textContent.trim();var clabe=(el('clabe').dataset.raw||'').replace(/\s+/g,'');var tarjeta=(el('tarjeta').dataset.raw||'').replace(/\s+/g,'');var concepto=el('concepto').textContent.trim();var text='Nombre: '+nombre+'\nBanco: '+banco+'\nCLABE: '+clabe+'\nTarjeta: '+tarjeta+'\nConcepto: '+concepto;if(navigator.share){navigator.share({title:'Datos de pago — ROOS Alta Peluquería',text:text,url:'https://wardobb.github.io/ROOS_PAGOS/'});}else{copyToClipboard(text+'\n'+'https://wardobb.github.io/ROOS_PAGOS/',document.querySelector('.actions .btn'));}}
+function shareAll(){
+  var nombre=el('nombre').textContent.trim();
+  var banco=el('banco').textContent.trim();
+  var clabe=(el('clabe').dataset.raw||'').replace(/\s+/g,'');
+  var tarjeta=(el('tarjeta').dataset.raw||'').replace(/\s+/g,'');
+  var concepto=el('concepto').textContent.trim();
+  var text='Nombre: '+nombre+'\nBanco: '+banco+'\nCLABE: '+clabe+'\nTarjeta: '+tarjeta+'\nConcepto: '+concepto;
+  if(navigator.share){
+    navigator.share({title:'Datos de pago — ROOS Alta Peluquería',text:text}).catch(()=>{});
+  }else{
+    copyToClipboard(text, document.querySelector('.actions .btn'));
+  }
+}
 </script>
 </body>
 </html>
