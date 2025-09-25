@@ -8,38 +8,57 @@
 <title>Datos de pago — Roos Alta Peluquería y Spa</title>
 <meta name="description" content="Datos bancarios para transferencia. Usa los botones Copiar para evitar errores.">
 
-<!-- Google Fonts: Poppins -->
+<!-- Favicon -->
+<link rel="icon" href="logo.png" type="image/png">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Datos de pago — ROOS Alta Peluquería">
+<meta property="og:description" content="Transfiere con confianza. Beneficiario: Rosalba Leyva de la Cruz. Banco: Banamex. CLABE y tarjeta con botones para copiar.">
+<meta property="og:image" content="logo.png">
+<meta property="og:url" content="https://wardobb.github.io/ROOS_PAGOS/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Datos de pago — ROOS Alta Peluquería">
+<meta name="twitter:description" content="Transfiere con confianza. CLABE y tarjeta con botones para copiar.">
+<meta name="twitter:image" content="logo.png">
+
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root { --accent: #ff2a8f; --bg:#fff5fa; --ink:#111827; --muted:#6b7280; }
+  :root { --accent: #ff2a8f; --bg:#fff5fa; --ink:#111827; --muted:#6b7280; --card:#ffffff; --sep:#eceff4; }
   html,body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 40px; }
-  .card { background:#fff; border:1px solid #e6e8ee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 18px; }
+  .card { background:var(--card); border:1px solid #e6e8ee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 18px; }
   .brand { display:flex; align-items:center; gap:14px; margin: 4px 0 8px; }
-  .brand img { height: 115px; width:auto; }
-  h1 { font-size: clamp(1.2rem, 2.8vw, 1.6rem); margin: 0; line-height:1.2; }
-  .badge { display:inline-block; background: rgba(255,42,143,.12); color: var(--accent); padding:2px 8px; border-radius:999px; font-size:.8rem; margin-left:6px; }
+  .brand img { height: 115px; width:auto; filter: drop-shadow(0 4px 10px rgba(255,42,143,.25)); }
+  h1 { font-family:'Playfair Display', serif; font-weight:700; font-size: clamp(1.35rem, 3.2vw, 1.9rem); margin: 0; line-height:1.2; }
+  .subtitle { font-size: .98rem; color: var(--muted); margin: 2px 0 14px; }
+  .badge { display:inline-block; background: rgba(255,42,143,.12); color: var(--accent); padding:2px 8px; border-radius:999px; font-size:.8rem; margin-left:8px; }
   .muted { color:var(--muted); font-size: .95rem; margin: 6px 0 14px; }
-  .grid { display:grid; grid-template-columns: 1fr; gap:12px; }
-  @media (min-width:640px) { .grid { grid-template-columns: 1fr 1fr; } }
-  .field { display:flex; flex-direction:column; gap:6px; }
-  .label { font-weight:700; color:#374151; }
+  .grid { display:grid; grid-template-columns: 1fr; gap:0; }
+  .sep { height:1px; background:var(--sep); margin:0; }
+  @media (min-width:640px) { .grid { grid-template-columns: 1fr 1fr; } .sep { grid-column: 1 / -1; } }
+  .field { display:flex; flex-direction:column; gap:6px; padding:12px 0; }
+  .label { font-weight:700; color:#374151; display:flex; align-items:center; gap:8px; }
   .value { display:flex; align-items:center; justify-content:space-between; gap:10px; background:#f9fbff; border:1px solid #e5e7eb; border-radius:12px; padding: 12px; }
-  .value * { text-decoration: none !important; }
   .mono { font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.3px; }
-  .tip { min-height:1.25em; font-size:.95rem; color:#059669; margin-top: 10px; }
-  .footer { margin-top: 16px; font-size:.86rem; color: var(--muted); }
-  button.copy { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; width: 120px; transition: opacity .15s ease; }
-  button.copy:active { transform: translateY(1px); }
+  .tip { min-height:1.25em; font-size:.95rem; color:#059669; margin-top: 10px; text-align:center; }
+  .footer { margin-top: 16px; font-size:.86rem; color: var(--muted); text-align:center; }
+  button.copy, .btn { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+  button.copy { width: 128px; transition: opacity .15s ease; }
   button.copy[aria-busy="true"] { opacity:.7; pointer-events:none; }
-  a.btn { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; width:100%; max-width:320px; margin:0 auto; }
-  a.btn:active { transform: translateY(1px); }
-  .actions { display:flex; justify-content:center; margin-top: 10px; }
-  .all { border:1px dashed #e5e7eb; background:#fff; padding:14px; border-radius:12px; margin-top:14px; }
+  .btn-block { width:100%; max-width:360px; margin:0 auto; }
+  .actions { display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:12px; }
+  @media (min-width:520px) { .actions { flex-direction:row; justify-content:center; } }
+  .glow { box-shadow: 0 0 0 0 rgba(255,42,143,.7); animation: glow .7s ease-out; }
+  @keyframes glow { 0% { box-shadow: 0 0 0 0 rgba(255,42,143,.7);} 100% { box-shadow: 0 0 0 12px rgba(255,42,143,0);} }
+  @keyframes bounceIn { 0% { transform: scale(.9); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+  .bounce { animation: bounceIn .7s ease-out both; }
 </style>
 </head>
 <body>
@@ -47,37 +66,47 @@
     <div class="card">
       <div class="brand">
         <img src="logo.png" alt="Roos Alta Peluquería y Spa">
-        <h1>Datos de pago <span class="badge">Transferencia</span></h1>
+        <div>
+          <h1>Datos de pago <span class="badge">Transferencia</span></h1>
+          <div class="subtitle">Transfiere con confianza a nuestra cuenta oficial</div>
+        </div>
       </div>
-      <p class="muted">Toca <strong>Copiar</strong> y pega en tu app bancaria. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
+
+      <p class="muted">Usa <strong>Copiar</strong> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
 
       <div class="grid">
         <div class="field">
-          <div class="label">Beneficiario</div>
+          <div class="label">👤 Beneficiario</div>
           <div class="value">
             <span id="nombre">Rosalba Leyva de la Cruz</span>
             <button class="copy" onclick="copyText('nombre', this)">Copiar</button>
           </div>
         </div>
 
+        <hr class="sep">
+
         <div class="field">
-          <div class="label">Banco</div>
+          <div class="label">🏦 Banco</div>
           <div class="value">
             <span id="banco">Banamex</span>
             <button class="copy" onclick="copyText('banco', this)">Copiar</button>
           </div>
         </div>
 
+        <hr class="sep">
+
         <div class="field">
-          <div class="label">CLABE (18 dígitos)</div>
+          <div class="label">🔑 CLABE (18 dígitos)</div>
           <div class="value">
             <span id="clabe" class="mono" data-raw="002320701120719601">002320701120719601</span>
             <button class="copy" onclick="copyRaw('clabe', this)">Copiar</button>
           </div>
         </div>
 
+        <hr class="sep">
+
         <div class="field">
-          <div class="label">Tarjeta de débito</div>
+          <div class="label">💳 Tarjeta de débito</div>
           <div class="value">
             <span id="tarjeta" class="mono" data-raw="5204165123060497">5204 1651 2306 0497</span>
             <button class="copy" onclick="copyRaw('tarjeta', this)">Copiar</button>
@@ -86,48 +115,65 @@
       </div>
 
       <div class="actions">
-        <a class="btn" href="https://wa.me/523311845963" target="_blank" rel="noopener">WhatsApp 3311845963</a>
+        <a class="btn btn-block bounce" href="https://wa.me/523311845963?text=Hola%%2C%%20quiero%%20pagar%%20con%%20concepto%%20ROOSTransferencia" target="_blank" rel="noopener">WhatsApp 3311845963</a>
+        <button class="btn btn-block" onclick="shareAll()">Compartir datos</button>
       </div>
 
-      <div class="all">
-        <div class="label" style="margin-bottom:6px">Concepto sugerido</div>
+      <div class="all" style="border:1px dashed #e5e7eb; background:#fff; padding:14px; border-radius:12px; margin-top:14px;">
+        <div class="label" style="margin-bottom:6px">📝 Concepto de pago sugerido</div>
         <div class="value">
-          <span id="concepto">ROOS</span>
+          <span id="concepto">ROOSTransferencia</span>
           <button class="copy" onclick="copyText('concepto', this)">Copiar</button>
         </div>
       </div>
 
       <div class="tip" id="msg"></div>
-      <div class="footer">Última actualización: 24 Sep 2025</div>
+      <div class="footer">Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería</strong>.<br>Última actualización: 25 Sep 2025</div>
     </div>
   </div>
 
 <script>
 function el(id) { return document.getElementById(id); }
+function haptic() { if (navigator.vibrate) { try { navigator.vibrate(20); } catch(e){} } }
 function flashBtn(btn, text) {
   const prev = btn.textContent;
   btn.setAttribute('aria-busy', 'true');
   btn.textContent = text;
+  btn.classList.add('glow');
   setTimeout(() => {
     btn.textContent = prev;
     btn.removeAttribute('aria-busy');
-  }, 1400);
+    btn.classList.remove('glow');
+  }, 1300);
 }
-function notify(t) { const m = el('msg'); m.textContent = t; setTimeout(()=> m.textContent='', 1400); }
+function notify(t) { const m = el('msg'); m.textContent = t; setTimeout(()=> m.textContent='', 1300); }
 function copyToClipboard(text, btn) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => { flashBtn(btn, 'Copiado ✓'); notify('Copiado ✓'); }).catch(() => { fallback(text, btn); });
+    navigator.clipboard.writeText(text).then(() => { haptic(); flashBtn(btn, 'Copiado ✓'); notify('Copiado ✓'); }).catch(() => { fallback(text, btn); });
   } else { fallback(text, btn); }
 }
 function fallback(text, btn) {
   const ta = document.createElement('textarea');
   ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-  ta.remove(); flashBtn(btn, 'Copiado ✓'); notify('Copiado ✓');
+  ta.remove(); haptic(); flashBtn(btn, 'Copiado ✓'); notify('Copiado ✓');
 }
 function copyText(id, btn) { copyToClipboard(el(id).textContent.trim(), btn); }
 function copyRaw(id, btn) {
   const raw = el(id).dataset.raw || el(id).textContent;
   copyToClipboard(raw.replace(/\s+/g,''), btn);
+}
+function shareAll() {
+  var nombre = el('nombre').textContent.trim();
+  var banco  = el('banco').textContent.trim();
+  var clabe  = (el('clabe').dataset.raw||'').replace(/\s+/g,'');
+  var tarjeta= (el('tarjeta').dataset.raw||'').replace(/\s+/g,'');
+  var concepto = el('concepto').textContent.trim();
+  var text = 'Nombre: ' + nombre + '\nBanco: ' + banco + '\nCLABE: ' + clabe + '\nTarjeta: ' + tarjeta + '\nConcepto: ' + concepto;
+  if (navigator.share) {
+    navigator.share({ title: 'Datos de pago — ROOS Alta Peluquería', text: text, url: 'https://wardobb.github.io/ROOS_PAGOS/' }).catch(()=>{});
+  } else {
+    copyToClipboard(text + '\n' + 'https://wardobb.github.io/ROOS_PAGOS/', document.querySelector('.actions .btn'));
+  }
 }
 </script>
 </body>
