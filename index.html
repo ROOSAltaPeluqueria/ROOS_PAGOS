@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="format-detection" content="telephone=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Datos de pago — ROOS Alta Peluquería</title>
-  <link rel="icon" href="logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png" type="image/png" />
+  <!-- Títulos elegantes + cuerpo legible -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
-    :root{--accent:#ff2a8f;--bg:#fff5fa;--ink:#111827;}
-    *{box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;background:var(--bg);margin:0;padding:0;color:var(--ink)}
-    .container{max-width:880px;margin:24px auto;padding:16px}
-    .card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.06);padding:18px}
+    :root{ --accent:#ff2a8f; --bg:#fff5fa; --ink:#111827; }
+    *{ box-sizing:border-box; }
+    html,body{ width:100%; max-width:100%; }
+    body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif; }
 
-    /* Header */
-    .header{display:flex;align-items:center;gap:16px;margin-bottom:6px}
-    .logo{height:120px;width:auto}
-    @media(min-width:700px){.logo{height:130px}}
-    .title-section{flex:1;min-width:0}
-    .title{margin:0;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.6rem,3.8vw,2.2rem);white-space:nowrap;line-height:1}
-    .tag{display:inline-block;margin-top:6px;background:rgba(255,42,143,.12);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:.92rem}
+    /* Contenedor fluido: 880px máx, con margen lateral en móviles */
+    .container{ width:min(880px, calc(100% - 32px)); margin:24px auto; }
+    .card{ background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.06); padding:18px; }
 
-    .trust{margin:12px 0 8px;text-align:center;font-size:.9rem;font-weight:700;color:rgba(17,24,39,.66);white-space:nowrap}
-    @media(max-width:380px){.trust{font-size:.82rem}}
+    /* Header como en tus capturas buenas */
+    .header{ display:flex; align-items:center; gap:16px; margin-bottom:6px; }
+    .logo{ height:120px; width:auto; flex:0 0 auto; }
+    .title-wrap{ flex:1; min-width:0; }
+    .title{ margin:0; font-family:"Playfair Display",serif; font-weight:700;
+            font-size:clamp(1.6rem,3.8vw,2.2rem); line-height:1; white-space:nowrap; }
+    .tag{ display:inline-block; margin-top:8px; background:rgba(255,42,143,.12);
+          color:var(--accent); padding:6px 12px; border-radius:999px; font-size:.92rem; }
 
-    .muted{color:#6b7280;margin:10px 0 16px;text-align:center}
-    @media(min-width:640px){.muted{text-align:left}}
+    /* Línea de confianza centrada, una línea cuando se pueda */
+    .trust{ margin:12px 0 8px; text-align:center; font-weight:700;
+            color:rgba(17,24,39,.66); font-size:.9rem; white-space:nowrap; }
+    /* Texto de ayuda */
+    .hint{ color:#6b7280; margin:10px 0 16px; text-align:center; }
 
-    .grid{display:grid;grid-template-columns:1fr;gap:0}
-    @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;column-gap:14px}}
-    .field{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid #eceff4}
-    .field:first-child{border-top:0}
-    @media(min-width:640px){.field{border-top:0}}
-    .label{font-weight:700;display:flex;align-items:center;gap:8px}
-    .value{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f9fbff;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
-    .value span.nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    /* Neutralize any auto-linked numbers (iOS) */
-    .value a{color:inherit !important;text-decoration:none !important;pointer-events:none !important;}
+    /* Campos */
+    .grid{ display:grid; grid-template-columns:1fr; gap:0; }
+    @media (min-width:640px){ .grid{ grid-template-columns:1fr 1fr; column-gap:14px; } }
+    .field{ display:flex; flex-direction:column; gap:6px; padding:14px 0; border-top:1px solid #eceff4; }
+    .field:first-child{ border-top:0; }
+    @media (min-width:640px){ .field{ border-top:0; } }
 
-    button.copy,.btn{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center}
-    button.copy{width:128px}
+    .label{ font-weight:700; display:flex; align-items:center; gap:8px; }
+    .value{ display:flex; align-items:center; justify-content:space-between; gap:10px;
+            background:#f9fbff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; }
+    .value span{ font-size:clamp(.95rem, 2.2vw, 1rem); }
+    .value span.nowrap{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
-    .actions{display:flex;flex-direction:column;gap:12px;margin-top:16px}
-    .btn-block{display:block;width:100%;max-width:100%;margin:0 auto;text-align:center;overflow:hidden}
-    @media(min-width:640px){.btn-block{max-width:420px}}
+    /* iOS a veces auto-linkea: neutralizamos cualquier <a> generado */
+    .value a{ color:inherit !important; text-decoration:none !important; pointer-events:none !important; }
 
-    .footer{margin-top:16px;text-align:center;color:#6b7280;font-size:.9rem}
+    button.copy, .btn{
+      border:0; background:var(--accent); color:#fff; border-radius:12px;
+      padding:12px 14px; font-weight:600; cursor:pointer;
+      display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    }
+    button.copy{ width:128px; }
+
+    .actions{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+    .btn-block{ display:block; width:100%; max-width:100%; margin:0 auto; text-align:center; overflow:hidden; }
+    @media (min-width:640px){ .btn-block{ max-width:420px; } }
+
+    .footer{ margin-top:16px; text-align:center; color:#6b7280; font-size:.9rem; }
+
+    /* ✅ Ajustes RESPONSIVE para que TODOS se vean como las 2 primeras capturas */
+    @media (max-width:430px){
+      .container{ width:min(880px, calc(100% - 20px)); }
+      .logo{ height:92px; }
+      .title{ font-size:clamp(1.35rem, 5.2vw, 1.75rem); white-space:nowrap; }
+      .tag{ font-size:.85rem; padding:5px 10px; }
+      .trust{ font-size:.84rem; }
+      button.copy{ width:118px; padding:10px 12px; }
+    }
+    /* iPhone normal / Android ~390px */
+    @media (max-width:390px){
+      .logo{ height:86px; }
+      .title{ font-size:1.5rem; }
+      .tag{ font-size:.82rem; }
+    }
+    /* Android compactos / <=360px: apilar header para que no se encime nada */
+    @media (max-width:360px){
+      .header{ flex-direction:column; align-items:flex-start; gap:8px; }
+      .title{ white-space:normal; }
+      .logo{ height:82px; }
+      .trust{ white-space:normal; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="card">
+      <!-- Header -->
       <div class="header">
-        <img src="logo.png" alt="ROOS Alta Peluquería y Spa" class="logo">
-        <div class="title-section">
+        <img src="logo.png" alt="ROOS Alta Peluquería y Spa" class="logo" />
+        <div class="title-wrap">
           <h1 class="title">Datos de pago</h1>
           <div class="tag">Transferencia</div>
         </div>
       </div>
 
+      <!-- Frase de confianza centrada -->
       <div class="trust">Transfiere con confianza a nuestra cuenta oficial</div>
-      <p class="muted">Usa <strong>Copiar</strong> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
+      <p class="hint">Usa <strong>Copiar</strong> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
 
       <div class="grid">
         <div class="field">
@@ -97,7 +136,7 @@
         </div>
       </div>
 
-      <div style="border:1px dashed #e5e7eb;background:#fff;padding:14px;border-radius:12px;margin-top:14px;">
+      <div style="border:1px dashed #e5e7eb; background:#fff; padding:14px; border-radius:12px; margin-top:14px;">
         <div class="label" style="margin-bottom:6px">📝 Concepto de pago sugerido</div>
         <div class="value">
           <span id="concepto">ROOSTransferencia</span>
@@ -111,27 +150,40 @@
       </div>
 
       <div class="footer">
-        Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería</strong>.<br>
+        Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería</strong>.<br />
         Última actualización: 25 Sep 2025
       </div>
     </div>
   </div>
 
-<script>
-function el(id){return document.getElementById(id);}
-function copyToClipboard(text,btn){(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(()=>{btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);}).catch(()=>{var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);});}
-function copyText(id,btn){copyToClipboard(el(id).textContent.trim(),btn);}
-function copyRaw(id,btn){var raw=el(id).dataset.raw||el(id).textContent;copyToClipboard(raw.replace(/\s+/g,''),btn);}
-function shareAll(){
-  var nombre=el('nombre').textContent.trim();
-  var banco=el('banco').textContent.trim();
-  var clabe=(el('clabe').dataset.raw||'').replace(/\s+/g,'');
-  var tarjeta=(el('tarjeta').dataset.raw||'').replace(/\s+/g,'');
-  var concepto=el('concepto').textContent.trim();
-  var text='Nombre: '+nombre+'\nBanco: '+banco+'\nCLABE: '+clabe+'\nTarjeta: '+tarjeta+'\nConcepto: '+concepto;
-  if(navigator.share){navigator.share({title:'Datos de pago — ROOS Alta Peluquería',text:text}).catch(()=>{});}
-  else{copyToClipboard(text, document.querySelector('.actions .btn'));}
-}
-</script>
+  <script>
+    const el = id => document.getElementById(id);
+    function copyToClipboard(text, btn){
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject())
+        .then(() => { btn.textContent = "Copiado ✓"; setTimeout(()=>btn.textContent="Copiar",1200); })
+        .catch(() => {
+          const t = document.createElement('textarea');
+          t.value = text; document.body.appendChild(t); t.select();
+          document.execCommand('copy'); t.remove();
+          btn.textContent = "Copiado ✓"; setTimeout(()=>btn.textContent="Copiar",1200);
+        });
+    }
+    function copyText(id, btn){ copyToClipboard(el(id).textContent.trim(), btn); }
+    function copyRaw(id, btn){
+      const raw = (el(id).dataset.raw || el(id).textContent).replace(/\s+/g,'');
+      copyToClipboard(raw, btn);
+    }
+    function shareAll(){
+      const nombre = el('nombre').textContent.trim();
+      const banco  = el('banco').textContent.trim();
+      const clabe  = (el('clabe').dataset.raw||'').replace(/\s+/g,'');
+      const tarjeta= (el('tarjeta').dataset.raw||'').replace(/\s+/g,'');
+      const concepto = el('concepto').textContent.trim();
+      const text = `Nombre: ${nombre}\nBanco: ${banco}\nCLABE: ${clabe}\nTarjeta: ${tarjeta}\nConcepto: ${concepto}`;
+      if (navigator.share){ navigator.share({ title:'Datos de pago — ROOS Alta Peluquería', text }).catch(()=>{}); }
+      else { copyToClipboard(text, document.querySelector('.actions .btn')); }
+    }
+  </script>
 </body>
 </html>
+
