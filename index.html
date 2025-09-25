@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ff2a8f">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
-<title>Datos de pago — Roos Alta Peluquería y Spa</title>
+<title>Datos de pago — ROOS Alta Peluquería</title>
 <meta name="description" content="Datos bancarios para transferencia. Usa los botones Copiar para evitar errores.">
 
 <!-- Favicon -->
@@ -32,14 +32,24 @@
   :root { --accent: #ff2a8f; --bg:#fff5fa; --ink:#111827; --muted:#6b7280; --card:#ffffff; --sep:#eceff4; }
   html,body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 40px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 16px 40px; }
   .card { background:var(--card); border:1px solid #e6e8ee; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 18px; }
-  .brand { display:flex; align-items:center; gap:14px; margin: 4px 0 8px; }
-  .brand img { height: 115px; width:auto; filter: drop-shadow(0 4px 10px rgba(255,42,143,.25)); }
-  h1 { font-family:'Playfair Display', serif; font-weight:700; font-size: clamp(1.35rem, 3.2vw, 1.9rem); margin: 0; line-height:1.2; }
-  .subtitle { font-size: .98rem; color: var(--muted); margin: 2px 0 14px; }
-  .badge { display:inline-block; background: rgba(255,42,143,.12); color: var(--accent); padding:2px 8px; border-radius:999px; font-size:.8rem; margin-left:8px; }
-  .muted { color:var(--muted); font-size: .95rem; margin: 6px 0 14px; }
+
+  /* HERO responsive: column on mobile, row on >=680px */
+  .hero { display:flex; flex-direction:column; align-items:center; gap:14px; margin: 6px 0 10px; text-align:center; }
+  .hero img { height: 130px; width:auto; filter: drop-shadow(0 4px 10px rgba(255,42,143,.25)); }
+  .hero .info { max-width: 560px; }
+  .badge { display:inline-block; background: rgba(255,42,143,.12); color: var(--accent); padding:4px 10px; border-radius:999px; font-size:.85rem; }
+  h1 { font-family:'Playfair Display', serif; font-weight:700; font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0; line-height:1.2; }
+  .subtitle { font-size: .98rem; color: var(--muted); margin: 6px 0 0; }
+  @media (min-width:680px) {
+    .hero { flex-direction:row; align-items:center; justify-content:flex-start; text-align:left; }
+    .hero .info { flex:1; }
+  }
+
+  .muted { color:var(--muted); font-size: .95rem; margin: 8px 0 14px; text-align:center; }
+  @media (min-width:680px) { .muted { text-align:left; } }
+
   .grid { display:grid; grid-template-columns: 1fr; gap:0; }
   .sep { height:1px; background:var(--sep); margin:0; }
   @media (min-width:640px) { .grid { grid-template-columns: 1fr 1fr; } .sep { grid-column: 1 / -1; } }
@@ -49,24 +59,26 @@
   .mono { font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.3px; }
   .tip { min-height:1.25em; font-size:.95rem; color:#059669; margin-top: 10px; text-align:center; }
   .footer { margin-top: 16px; font-size:.86rem; color: var(--muted); text-align:center; }
+
   button.copy, .btn { -webkit-tap-highlight-color: transparent; border:0; background:var(--accent); color:#fff; border-radius: 12px; padding: 12px 14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
   button.copy { width: 128px; transition: opacity .15s ease; }
   button.copy[aria-busy="true"] { opacity:.7; pointer-events:none; }
-  .btn-block { width:100%; max-width:360px; margin:0 auto; }
-  .actions { display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:12px; }
-  @media (min-width:520px) { .actions { flex-direction:row; justify-content:center; } }
+
+  /* Actions at bottom stacked */
+  .actions { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+  .btn-block { width:100%; max-width:420px; margin:0 auto; }
   .glow { box-shadow: 0 0 0 0 rgba(255,42,143,.7); animation: glow .7s ease-out; }
   @keyframes glow { 0% { box-shadow: 0 0 0 0 rgba(255,42,143,.7);} 100% { box-shadow: 0 0 0 12px rgba(255,42,143,0);} }
-  @keyframes bounceIn { 0% { transform: scale(.9); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-  .bounce { animation: bounceIn .7s ease-out both; }
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <div class="brand">
-        <img src="logo.png" alt="Roos Alta Peluquería y Spa">
-        <div>
+
+      <!-- HERO: logo left (desktop) / centered (mobile), info on the right -->
+      <div class="hero">
+        <img src="logo.png" alt="ROOS Alta Peluquería y Spa">
+        <div class="info">
           <h1>Datos de pago <span class="badge">Transferencia</span></h1>
           <div class="subtitle">Transfiere con confianza a nuestra cuenta oficial</div>
         </div>
@@ -114,17 +126,18 @@
         </div>
       </div>
 
-      <div class="actions">
-        <a class="btn btn-block bounce" href="https://wa.me/523311845963?text=Hola%%2C%%20quiero%%20pagar%%20con%%20concepto%%20ROOSTransferencia" target="_blank" rel="noopener">WhatsApp 3311845963</a>
-        <button class="btn btn-block" onclick="shareAll()">Compartir datos</button>
-      </div>
-
       <div class="all" style="border:1px dashed #e5e7eb; background:#fff; padding:14px; border-radius:12px; margin-top:14px;">
         <div class="label" style="margin-bottom:6px">📝 Concepto de pago sugerido</div>
         <div class="value">
           <span id="concepto">ROOSTransferencia</span>
           <button class="copy" onclick="copyText('concepto', this)">Copiar</button>
         </div>
+      </div>
+
+      <!-- Actions at bottom, stacked -->
+      <div class="actions">
+        <a class="btn btn-block" href="https://wa.me/523311845963?text=Hola%%2C%%20quiero%%20pagar%%20con%%20concepto%%20ROOSTransferencia" target="_blank" rel="noopener">WhatsApp 3311845963</a>
+        <button class="btn btn-block" onclick="shareAll()">Compartir datos</button>
       </div>
 
       <div class="tip" id="msg"></div>
