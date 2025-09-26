@@ -10,42 +10,36 @@
   <style>
     :root{--accent:#ff2a8f;--bg:#fff5fa;--ink:#111827;}
     *{box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;background:var(--bg);margin:0;padding:0;color:var(--ink)}
+    html,body{width:100%;margin:0;padding:0;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+    img{max-width:100%;height:auto;display:block}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink)}
     .container{max-width:880px;margin:24px auto;padding:16px}
     .card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.06);padding:18px}
-
-    /* Header */
-    .header{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+    .header{display:flex;align-items:center;gap:16px;margin-bottom:6px;min-width:0}
     .logo{height:120px;width:auto}
     @media(min-width:700px){.logo{height:130px}}
     .title-section{flex:1;min-width:0}
     .title{margin:0;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.6rem,3.8vw,2.2rem);white-space:nowrap;line-height:1}
     .tag{display:inline-block;margin-top:6px;background:rgba(255,42,143,.12);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:.92rem}
-
     .trust{margin:12px 0 8px;text-align:center;font-size:.9rem;font-weight:700;color:rgba(17,24,39,.66);white-space:nowrap}
-    @media(max-width:380px){.trust{font-size:.82rem}}
-
+    @media(max-width:380px){ .trust{font-size:.82rem} }
     .muted{color:#6b7280;margin:10px 0 16px;text-align:center}
-    @media(min-width:640px){.muted{text-align:left}}
-
-    .grid{display:grid;grid-template-columns:1fr;gap:0}
-    @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;column-gap:14px}}
-    .field{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid #eceff4}
+    @media(min-width:640px){ .muted{text-align:left} }
+    .grid{display:grid;grid-template-columns:1fr;gap:0;min-width:0}
+    @media(min-width:640px){ .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:14px} }
+    .field{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid #eceff4;min-width:0}
     .field:first-child{border-top:0}
-    @media(min-width:640px){.field{border-top:0}}
+    @media(min-width:640px){ .field{border-top:0} }
     .label{font-weight:700;display:flex;align-items:center;gap:8px}
-    .value{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f9fbff;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
+    .value{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f9fbff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;min-width:0}
+    .value span{min-width:0}
     .value span.nowrap{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    /* Neutralize any auto-linked numbers (iOS) */
-    .value a{color:inherit !important;text-decoration:none !important;pointer-events:none !important;}
-
+    .value a{color:inherit!important;text-decoration:none!important;pointer-events:none!important}
     button.copy,.btn{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center}
     button.copy{width:128px}
-
     .actions{display:flex;flex-direction:column;gap:12px;margin-top:16px}
     .btn-block{display:block;width:100%;max-width:100%;margin:0 auto;text-align:center;overflow:hidden}
-    @media(min-width:640px){.btn-block{max-width:420px}}
-
+    @media(min-width:640px){ .btn-block{max-width:420px} }
     .footer{margin-top:16px;text-align:center;color:#6b7280;font-size:.9rem}
   </style>
 </head>
@@ -59,10 +53,8 @@
           <div class="tag">Transferencia</div>
         </div>
       </div>
-
       <div class="trust">Transfiere con confianza a nuestra cuenta oficial</div>
       <p class="muted">Usa <strong>Copiar</strong> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
-
       <div class="grid">
         <div class="field">
           <div class="label">👤 Beneficiario</div>
@@ -71,7 +63,6 @@
             <button class="copy" onclick="copyText('nombre', this)">Copiar</button>
           </div>
         </div>
-
         <div class="field">
           <div class="label">🏦 Banco</div>
           <div class="value">
@@ -79,7 +70,6 @@
             <button class="copy" onclick="copyText('banco', this)">Copiar</button>
           </div>
         </div>
-
         <div class="field">
           <div class="label">🔑 CLABE (18 dígitos)</div>
           <div class="value">
@@ -87,16 +77,14 @@
             <button class="copy" onclick="copyRaw('clabe', this)">Copiar</button>
           </div>
         </div>
-
         <div class="field">
-          <div class="label">💳 Número de tarjeta</div>
+          <div class="label">💳 Número de cuenta</div>
           <div class="value">
             <span id="tarjeta" data-raw="5204165123060497">5204 1651 2306 0497</span>
             <button class="copy" onclick="copyRaw('tarjeta', this)">Copiar</button>
           </div>
         </div>
       </div>
-
       <div style="border:1px dashed #e5e7eb;background:#fff;padding:14px;border-radius:12px;margin-top:14px;">
         <div class="label" style="margin-bottom:6px">📝 Concepto de pago sugerido</div>
         <div class="value">
@@ -104,34 +92,21 @@
           <button class="copy" onclick="copyText('concepto', this)">Copiar</button>
         </div>
       </div>
-
       <div class="actions">
         <a class="btn btn-block" href="https://wa.me/523311845963" target="_blank" rel="noopener">WhatsApp 3311845963</a>
         <button class="btn btn-block" onclick="shareAll()">Compartir datos</button>
       </div>
-
       <div class="footer">
-        Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería</strong>.<br>
-        Última actualización: 25 Sep 2025
+        Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería</strong>.
       </div>
     </div>
   </div>
-
 <script>
 function el(id){return document.getElementById(id);}
 function copyToClipboard(text,btn){(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(()=>{btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);}).catch(()=>{var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar",1200);});}
 function copyText(id,btn){copyToClipboard(el(id).textContent.trim(),btn);}
 function copyRaw(id,btn){var raw=el(id).dataset.raw||el(id).textContent;copyToClipboard(raw.replace(/\s+/g,''),btn);}
-function shareAll(){
-  var nombre=el('nombre').textContent.trim();
-  var banco=el('banco').textContent.trim();
-  var clabe=(el('clabe').dataset.raw||'').replace(/\s+/g,'');
-  var tarjeta=(el('tarjeta').dataset.raw||'').replace(/\s+/g,'');
-  var concepto=el('concepto').textContent.trim();
-  var text='Nombre: '+nombre+'\nBanco: '+banco+'\nCLABE: '+clabe+'\nTarjeta: '+tarjeta+'\nConcepto: '+concepto;
-  if(navigator.share){navigator.share({title:'Datos de pago — ROOS Alta Peluquería',text:text}).catch(()=>{});}
-  else{copyToClipboard(text, document.querySelector('.actions .btn'));}
-}
+function shareAll(){var nombre=el('nombre').textContent.trim();var banco=el('banco').textContent.trim();var clabe=(el('clabe').dataset.raw||'').replace(/\s+/g,'');var tarjeta=(el('tarjeta').dataset.raw||'').replace(/\s+/g,'');var concepto=el('concepto').textContent.trim();var text='Nombre: '+nombre+'\\nBanco: '+banco+'\\nCLABE: '+clabe+'\\nTarjeta: '+tarjeta+'\\nConcepto: '+concepto;if(navigator.share){navigator.share({title:'Datos de pago — ROOS Alta Peluquería',text:text}).catch(()=>{});}else{copyToClipboard(text, document.querySelector('.actions .btn'));}}
 </script>
 </body>
 </html>
