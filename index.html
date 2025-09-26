@@ -1,253 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Datos de pago — ROOS Alta Peluquería</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
-    body{
-      background:#ffeef7;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      min-height:100vh;
-      padding:20px;
-      -webkit-text-size-adjust:100%;
-      text-size-adjust:100%;
-      overflow-x:hidden;
-    }
-    .card{
-      background:white;
-      max-width:480px;
-      width:100%;
-      border-radius:14px;
-      padding:20px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    }
-    .header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      margin-bottom:10px;
-    }
-    .logo{
-      height:100px;
-      width:auto;
-      max-width:180px;
-    }
-    h1{
-      font-size:1.6rem;
-      font-weight:700;
-      margin-left:auto;
-    }
-    .badge{
-      display:inline-block;
-      background:#ff7fbf;
-      color:#fff;
-      padding:3px 10px;
-      border-radius:12px;
-      font-size:0.8rem;
-      margin-top:4px;
-    }
-    .trust-text{
-      text-align:center;
-      font-weight:600;
-      font-size:0.9rem;
-      opacity:0.8;
-      margin:5px 0 15px;
-    }
-    p.info{
-      font-size:0.9rem;
-      color:#444;
-      text-align:center;
-      margin-bottom:15px;
-    }
-    .section{
-      margin-bottom:14px;
-      border-bottom:1px solid #ddd;
-      padding-bottom:10px;
-    }
-    .label{
-      font-weight:600;
-      margin-bottom:6px;
-      display:flex;
-      align-items:center;
-      gap:6px;
-      font-size:1rem;
-    }
-    .value{
-      background:#f9f9f9;
-      border:1px solid #eee;
-      border-radius:8px;
-      padding:10px 12px;
-      font-size:0.95rem;
-      display:grid;
-      grid-template-columns:1fr auto;
-      align-items:center;
-      gap:10px;
-      max-width:100%;
-    }
-    .value>span{
-      min-width:0;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-    button.copy{
-      background:#ff2f88;
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      padding:10px 14px;
-      font-weight:500;
-      font-size:0.9rem;
-      cursor:pointer;
-      width:auto;
-      min-width:110px;
-      transition:background .3s;
-    }
-    button.copy:hover{background:#e02270;}
-
-    a.btn{
-      display:block;
-      background:#ff2f88;
-      color:#fff;
-      text-align:center;
-      text-decoration:none;
-      padding:12px 0;
-      border-radius:8px;
-      font-weight:600;
-      margin-top:14px;
-    }
-    a.btn:hover{background:#e02270;}
-
-    .share-btn{
-      display:block;
-      background:#f0f0f0;
-      color:#333;
-      text-align:center;
-      padding:10px 0;
-      border-radius:8px;
-      margin-top:10px;
-      font-size:0.9rem;
-      font-weight:500;
-      border:1px solid #ddd;
-      cursor:pointer;
-    }
-    .share-btn:hover{background:#e6e6e6;}
-
-    .footer{
-      font-size:0.8rem;
-      text-align:center;
-      color:#666;
-      margin-top:16px;
-      line-height:1.3;
-    }
-
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+    body{background:#ffeef7;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:20px;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+    .card{background:#fff;padding:25px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);max-width:480px;width:100%}
+    .header{display:flex;align-items:center;justify-content:flex-start;gap:15px;flex-wrap:wrap}
+    .header img{height:100px;width:auto}
+    .title-block{display:flex;flex-direction:column}
+    .title-block h2{font-size:1.5rem;font-weight:700;color:#222;white-space:nowrap}
+    .badge{background:#ff4da6;color:#fff;padding:3px 12px;border-radius:12px;font-size:0.8rem;margin-top:5px;display:inline-block}
+    .subtitle{margin:10px 0;font-size:0.9rem;color:#555;text-align:center;font-weight:600;opacity:.9}
+    .info{font-size:0.9rem;color:#555;margin-bottom:18px;text-align:center}
+    .section{margin-bottom:15px}
+    .label{font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:5px;color:#222}
+    .value{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;max-width:100%;background:#f9f9f9;padding:10px 15px;border-radius:10px;border:1px solid #eee}
+    .value span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#333}
+    button.copy{background:#ff4da6;color:#fff;border:none;padding:10px 14px;border-radius:8px;font-weight:600;cursor:pointer;width:auto;min-width:110px;transition:.3s}
+    button.copy:hover{background:#e04394}
+    a.btn{display:block;text-align:center;background:#ff4da6;color:#fff;padding:12px;border-radius:8px;font-weight:600;margin:10px 0;text-decoration:none;word-wrap:break-word;overflow-wrap:break-word}
+    a.btn:hover{background:#e04394}
+    .share{background:#333;color:#fff;padding:10px;border-radius:8px;text-align:center;cursor:pointer;font-weight:600;margin-top:8px}
+    .share:hover{background:#000}
+    .footer{font-size:0.8rem;color:#555;text-align:center;margin-top:15px}
+    .footer strong{color:#000}
     @media(max-width:360px){
-      .value{grid-template-columns:1fr;}
-      button.copy{justify-self:stretch;}
+      .value{grid-template-columns:1fr}
+      button.copy{justify-self:stretch}
     }
   </style>
 </head>
 <body>
-
   <div class="card">
     <div class="header">
-      <img src="logo.png" alt="Logo ROOS" class="logo" />
-      <div>
-        <h1>Datos de pago</h1>
-        <div class="badge">Transferencia</div>
+      <img src="logo.png" alt="Logo">
+      <div class="title-block">
+        <h2>Datos de pago</h2>
+        <span class="badge">Transferencia</span>
       </div>
     </div>
 
-    <div class="trust-text">Transfiere con confianza a nuestra cuenta oficial</div>
-    <p class="info">Usa <b>Copiar</b> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
+    <p class="subtitle">Transfiere con confianza a nuestra cuenta oficial</p>
+    <p class="info">Usa <strong>Copiar</strong> para evitar errores. Revisa los 18 dígitos de la CLABE antes de transferir.</p>
 
     <div class="section">
       <div class="label">👤 Beneficiario</div>
-      <div class="value">
-        <span>Rosalba Leyva de la Cruz</span>
-        <button class="copy" data-raw="Rosalba Leyva de la Cruz">Copiar</button>
-      </div>
+      <div class="value"><span>Rosalba Leyva de la Cruz</span><button class="copy" data-copy="Rosalba Leyva de la Cruz">Copiar</button></div>
     </div>
 
     <div class="section">
       <div class="label">🏦 Banco</div>
-      <div class="value">
-        <span>Banamex</span>
-        <button class="copy" data-raw="Banamex">Copiar</button>
-      </div>
+      <div class="value"><span>Banamex</span><button class="copy" data-copy="Banamex">Copiar</button></div>
     </div>
 
     <div class="section">
       <div class="label">🔑 CLABE (18 dígitos)</div>
-      <div class="value">
-        <span>002320701120719601</span>
-        <button class="copy" data-raw="002320701120719601">Copiar</button>
-      </div>
+      <div class="value"><span>002320701120719601</span><button class="copy" data-copy="002320701120719601">Copiar</button></div>
     </div>
 
     <div class="section">
       <div class="label">💳 Número de cuenta</div>
-      <div class="value">
-        <span>5204 1651 2306 0497</span>
-        <button class="copy" data-raw="5204165123060497">Copiar</button>
-      </div>
+      <div class="value"><span>5204 1651 2306 0497</span><button class="copy" data-copy="5204165123060497">Copiar</button></div>
     </div>
 
-    <div class="section" style="border:none;">
+    <div class="section">
       <div class="label">📝 Concepto de pago sugerido</div>
-      <div class="value" style="border:dashed 1px #ccc;">
-        <span>ROOSTransferencia</span>
-        <button class="copy" data-raw="ROOSTransferencia">Copiar</button>
-      </div>
+      <div class="value"><span>ROOSTransferencia</span><button class="copy" data-copy="ROOSTransferencia">Copiar</button></div>
     </div>
 
     <a href="https://wa.me/5213311845963" class="btn">WhatsApp 3311845963</a>
-    <button class="share-btn" id="shareBtn">Compartir datos</button>
+    <div class="share" onclick="shareData()">Compartir datos</div>
 
     <div class="footer">
-      Estos son los únicos datos oficiales de pago de <b>ROOS Alta Peluquería.</b><br>
+      Estos son los únicos datos oficiales de pago de <strong>ROOS Alta Peluquería.</strong><br>
       Última actualización: 25 Sep 2025
     </div>
   </div>
 
   <script>
-    // Botones de Copiar
-    document.querySelectorAll('button.copy').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const txt = btn.getAttribute('data-raw');
-        navigator.clipboard.writeText(txt).then(()=>{
-          btn.textContent = "Copiado";
-          btn.style.background = "#28a745";
-          setTimeout(()=>{
-            btn.textContent = "Copiar";
-            btn.style.background = "#ff2f88";
-          },1500);
+    document.querySelectorAll("button.copy").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const text=btn.getAttribute("data-copy");
+        navigator.clipboard.writeText(text).then(()=>{
+          let old=btn.innerText;
+          btn.innerText="Copiado!";
+          setTimeout(()=>btn.innerText=old,1500);
         });
       });
     });
 
-    // Compartir datos
-    document.getElementById('shareBtn').addEventListener('click',()=>{
-      const datos = 
-`Nombre: Rosalba Leyva de la Cruz
+    function shareData(){
+      const text=`Nombre: Rosalba Leyva de la Cruz
 Banco: Banamex
 CLABE: 002320701120719601
 Número de cuenta: 5204165123060497
 Concepto: ROOSTransferencia`;
       if(navigator.share){
-        navigator.share({text:datos});
-      } else {
-        navigator.clipboard.writeText(datos);
-        alert("Datos copiados al portapapeles.");
+        navigator.share({text:text});
+      }else{
+        navigator.clipboard.writeText(text);
+        alert("Datos copiados al portapapeles");
       }
-    });
+    }
   </script>
 </body>
 </html>
